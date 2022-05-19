@@ -1,6 +1,8 @@
 # update-aws-security-grp
 The script scans for defined port number in security groups and updates the IP address. Subnet mask for the address will always be /32, meaning limited to 1 host address.
 
+Ideally, have your own personal security group in each VPC. And that security group can be attached to the required resources.
+
 ## Before running:  
 
 ### Configure AWS CLI  
