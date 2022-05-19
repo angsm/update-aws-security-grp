@@ -11,6 +11,7 @@ https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html
 ### Update variables: 
 - aws profile
 - group-ids
+- fixed-ips (static IP that will always be applied into security group)
 - port number  
 ![image](https://user-images.githubusercontent.com/10956184/169195334-99998c49-856f-4234-8c21-a94caeb48c64.png)
 
