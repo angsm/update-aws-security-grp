@@ -1,6 +1,5 @@
 #!/bin/bash
 # Shell Script to Update AWS EC2 Security Groups
-# Note that existing IP rules will be deleted
 
 # CONFIG - Only edit the below lines to setup the script
 # ===============================
@@ -17,11 +16,7 @@ fixed_ips="1.1.1.1/32 2.2.2.2/32";
 # Port
 port=22;
 
-
-# DO NOT EDIT BELOW THIS LINE UNLESS YOU KNOW WHAT YOU ARE DOING
 # ===============================
-
-# Loop through groups
 
 for group_id in $group_ids
 do
@@ -51,12 +46,12 @@ do
     aws ec2 authorize-security-group-ingress --profile=$profile --protocol tcp --port $port --cidr ${ip4}/32 --group-id $group_id
 
     # Loop through fixed IPs
-    #for ip in $fixed_ips
-    #do
-    #    echo -e "\033[32mSetting Fixed IP: ${ip}\033[0m"
+    for ip in $fixed_ips
+    do
+        echo -e "\033[32mSetting Fixed IP: ${ip}\033[0m"
 
         # Add fixed IP rules
-    #    aws ec2 authorize-security-group-ingress --profile=$profile --protocol tcp --port $port --cidr ${ip} --group-id $group_id
-    #done
+        aws ec2 authorize-security-group-ingress --profile=$profile --protocol tcp --port $port --cidr ${ip} --group-id $group_id
+    done
 
 done
